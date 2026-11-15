@@ -1,0 +1,24 @@
+{
+  "background_color": "#3b1e9c",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "_UHH AI",
+  "orientation": "natural",
+  "scope": "/",
+  "short_name": "_UHH",
+  "start_url": "https://uhh-54fj.onrender.com/",
+  "theme_color": "#1e45e0",
+  "description": "THE OFFICIAL AI ASSISTANT _UHH BY PLUNGER STUDIOS",
+  "id": "underscore uhh",
+  "lang": "en",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "categories": [
+    "design",
+    "education",
+    "network",
+    "networking",
+    "personalization"
+  ]
+}
