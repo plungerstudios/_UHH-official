@@ -6,7 +6,7 @@
   "orientation": "natural",
   "scope": "/",
   "short_name": "_UHH",
-  "start_url": "https://uhh-54fj.onrender.com/",
+  "start_url": "https://onrender.com",
   "theme_color": "#1e45e0",
   "description": "THE OFFICIAL AI ASSISTANT _UHH BY PLUNGER STUDIOS",
   "id": "underscore uhh",
@@ -23,12 +23,12 @@
   ],
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
