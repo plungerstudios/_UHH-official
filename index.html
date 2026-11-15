@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#11131b" />
+    <title>_UHH — Plunger Studios</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <div class="brand-mark">u.</div>
+          <div>
+            <div class="brand-name">_UHH</div>
+            <div class="brand-byline">by Plunger Studios</div>
+          </div>
+          <button class="icon-button mobile-close" id="closeSidebar" aria-label="Close menu">×</button>
+        </div>
+
+        <button class="new-chat-button" id="newChatButton">
+          <span class="plus">+</span>
+          <span>New chat</span>
+          <span class="shortcut">⌘ K</span>
+        </button>
+
+        <label class="search-box">
+          <span class="search-icon">⌕</span>
+          <input id="chatSearch" type="search" placeholder="Search your chats" autocomplete="off" />
+          <kbd>⌘ F</kbd>
+        </label>
+
+        <div class="section-label">YOUR CHATS</div>
+        <div class="chat-list" id="chatList"></div>
+        <div class="sidebar-bottom">
+          <div class="local-note"><span class="privacy-dot"></span> Your chats stay on this device</div>
+          <button class="settings-link" id="settingsButton">
+            <span class="settings-icon">⚙</span>
+            <span>Personalization</span>
+            <span class="arrow">›</span>
+          </button>
+          <div class="profile-row">
+            <div class="avatar">U</div>
+            <div class="profile-copy">
+              <span id="profileName">Just you</span>
+              <small id="accountStatus">Local profile</small>
+            </div>
+            <span class="online-dot"></span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <button class="icon-button menu-button" id="openSidebar" aria-label="Open menu">☰</button>
+          <div class="mobile-brand"><span class="brand-mark small">u.</span><strong>_UHH</strong></div>
+          <div class="mode-control">
+            <span class="mode-caption">RESPONSE STYLE</span>
+            <div class="mode-switch" role="group" aria-label="Response style">
+              <button class="mode-button active" data-mode="casual" title="Natural, balanced responses">Casual <span>· auto</span></button>
+              <button class="mode-button" data-mode="formal" title="Polished, professional responses">Formal</button>
+              <button class="mode-button" data-mode="expert" title="More detailed reasoning and careful answers">Expert</button>
+            </div>
+          </div>
+          <div class="topbar-right">
+            <span class="connection-status" id="connectionStatus"><span class="status-dot"></span><span>Checking AI…</span></span>
+          </div>
+        </header>
+
+        <section class="conversation" id="conversation" aria-live="polite">
+          <div class="welcome" id="welcome">
+            <div class="welcome-orb"><span>u.</span><i></i></div>
+            <div class="eyebrow"><span class="sparkle">✳</span> YOUR EVERYDAY AI, WITH A LITTLE MORE YOU</div>
+            <h1>Hey<span class="accent">,</span> <span id="welcomeName">what’s on your mind?</span></h1>
+            <p class="welcome-copy">Ask anything, figure something out, or explore a new idea.<br class="desktop-break" /> We can take it one step at a time.</p>
+            <div class="suggestions">
+              <button class="suggestion" data-prompt="Help me plan a good week without overloading my schedule."><span class="suggestion-icon lavender">✳</span><span><b>Make a plan</b><small>Get a little more organized</small></span><span class="suggestion-arrow">↗</span></button>
+              <button class="suggestion" data-prompt="Explain a tricky idea in simple terms, with a useful example."><span class="suggestion-icon mint">◈</span><span><b>Learn something</b><small>Make a tricky idea click</small></span><span class="suggestion-arrow">↗</span></button>
+            </div>
+            <div class="welcome-footnote"><span>✦</span> A helpful starting point—not a replacement for your own judgment.</div>
+          </div>
+          <div class="message-list" id="messageList"></div>
+        </section>
+
+        <div class="composer-area">
+          <div class="composer-wrap">
+            <form class="composer" id="composerForm">
+              <textarea id="messageInput" rows="1" maxlength="5000" placeholder="Message _UHH…" aria-label="Message _UHH"></textarea>
+              <div class="composer-toolbar">
+                <div class="composer-tools">
+                  <span class="composer-hint">AI can make mistakes. Double-check anything important.</span>
+                </div>
+                <button class="send-button" id="sendButton" type="submit" aria-label="Send message" disabled><span id="sendIcon">↑</span></button>
+              </div>
+            </form>
+            <div class="composer-footer">AI providers may process your messages <span>·</span> Chats stay on this device</div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="backdrop" id="backdrop"></div>
+    <aside class="settings-panel" id="settingsPanel" aria-hidden="true">
+      <div class="settings-header">
+        <div><div class="eyebrow">MAKE IT YOURS</div><h2>Personalization</h2></div>
+        <button class="icon-button" id="closeSettings" aria-label="Close settings">×</button>
+      </div>
+      <p class="settings-intro">A few details help _UHH respond in a way that feels more like you. These settings are saved only in this browser.</p>
+      <label class="field-label" for="nameInput">What should _UHH call you?</label>
+      <input class="text-field" id="nameInput" maxlength="40" placeholder="Your name" />
+      <label class="field-label" for="instructionsInput">Anything else it should know?</label>
+      <textarea class="text-field instructions-field" id="instructionsInput" maxlength="800" placeholder="For example: I like short answers and practical examples."></textarea>
+      <div class="settings-tip"><span>✳</span><p>Don't add passwords, private keys, or sensitive personal information.</p></div>
+      <button class="save-settings-button" id="saveSettings">Save preferences</button>
+      <div class="settings-privacy"><span class="privacy-lock">⌑</span><span>Your chats and preferences are stored locally in this browser.</span></div>
+    </aside>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="welcome-gate" id="welcomeGate" hidden>
+      <section class="gate-card" aria-labelledby="gateTitle">
+        <div class="gate-brand"><span class="brand-mark">u.</span><span>_UHH</span></div>
+        <div class="eyebrow">A LOCAL PROFILE FOR YOUR DEVICE</div>
+        <h2 id="gateTitle">Welcome to _UHH</h2>
+        <p class="gate-intro">Enter an email to label this local profile and agree to the terms to continue.</p>
+        <form id="signInForm">
+          <label class="field-label" for="emailInput">Email address</label>
+          <input class="text-field" id="emailInput" name="email" type="email" maxlength="254" autocomplete="email" placeholder="you@example.com" required />
+          <div class="local-signin-note">This is not Google sign-in: the address is not verified, no password is created, and it is not sent to _UHH’s server. Chats stay in this browser.</div>
+          <div class="terms-document" id="termsDocument" tabindex="0" aria-label="Terms of Use and Privacy Notice">
+            <h3>Terms of Use &amp; Privacy Notice for _uhh</h3>
+            <h4>1. AI-Generated Content</h4>
+            <p>_uhh is an automated AI assistant powered by third-party AI providers (including Google Gemini, Groq, and OpenRouter). Replies are generated automatically and may be wrong, incomplete, or outdated. Do not use this assistant for medical, legal, financial, or emergency advice.</p>
+            <h4>2. Keep Conversations Safe &amp; Respectful</h4>
+            <p>You agree not to use _uhh to say, ask for, or generate anything harmful, abusive, hateful, explicit, violent, or illegal. Attempting to bypass safety filters or spam the service is not allowed, and access may be blocked at any time.</p>
+            <h4>3. Do Not Share Personal or Private Info</h4>
+            <p>Never type private or sensitive information into the chat. Do not share your full name, home address, phone number, school or workplace, passwords, ID numbers, photos, or banking details.</p>
+            <h4>4. How Your Chats &amp; Data Work</h4>
+            <p><b>Saved on Your Device:</b> Your chat history is stored locally in this browser so you can view past chats. Clearing your browser data will delete your saved chats.</p>
+            <p><b>Sent to AI Providers:</b> Your messages are sent through the _UHH backend to Google Gemini, Groq, or OpenRouter to generate replies. _UHH does not intentionally save chat messages on its backend. Providers and hosting services may process or retain data under their own policies, which can change. Read their current policies and do not send sensitive information.</p>
+            <h4>5. Age Limit</h4>
+            <p>You must be at least 13 years old to use _uhh.</p>
+            <h4>6. Free “As-Is” Service</h4>
+            <p>_uhh is provided free with no guarantees of uptime, speed, or accuracy. AI provider free-tier quotas and free hosting availability may change or run out. The creator is not responsible for issues, losses, or decisions made based on AI responses.</p>
+            <h4>7. Contact</h4>
+            <p>For questions, feedback, or removal requests, contact plungerstudios765.</p>
+          </div>
+          <label class="terms-check">
+            <input id="termsCheckbox" type="checkbox" required />
+            <span>I am at least 13 years old and agree to the Terms of Use &amp; Privacy Notice.</span>
+          </label>
+          <button class="save-settings-button" id="continueButton" type="submit" disabled>Continue to _UHH</button>
+        </form>
+      </section>
+    </div>
+    <div class="outage-gate" id="outageGate" hidden role="alertdialog" aria-modal="true" aria-labelledby="outageMessage">
+      <div class="outage-card">
+        <div class="outage-icon">!</div>
+        <p id="outageMessage">SORRY!, _uhh is not working right now please try again later.</p>
+        <small>_UHH will dismiss this message when a provider is available again.</small>
+      </div>
+    </div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

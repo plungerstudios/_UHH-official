@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: uhh
+    runtime: python
+    plan: free
+    buildCommand: python -m py_compile backend/server.py
+    startCommand: python backend/server.py
+    healthCheckPath: /health
